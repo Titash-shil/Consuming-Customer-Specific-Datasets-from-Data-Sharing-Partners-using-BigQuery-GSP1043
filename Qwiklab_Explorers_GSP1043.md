@@ -7,14 +7,36 @@
 #### This script and guide are provided for educational purposes to help you understand the lab process. Please ensure you understand the steps before using any scripts. Before using the script, I encourage you to open and review it to understand each step.The goal is to help you learn how to complete the labs effectively while following Qwiklabs' terms of service and YouTube's community guidelines.
 ---
 
- - ### Copy & Run the Commands in Cloud Shell Terminal :
+ - ### Copy & Run the Commands in Cloud Shell Terminal For different Console :
+
+### 💡 Run the Following Commands in Cloud Shell for : `Data Sharing Partner Project Console`
 
 ```
-curl -LO raw.githubusercontent.com/Titash-shil/Build-Infrastructure-with-Terraform-on-Google-Cloud-Challenge-Lab-GSP345/refs/heads/main/qwiklab_explorers_gsp345.sh
+curl -LO https://raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/refs/heads/main/Consuming%20Customer%20Specific%20Datasets%20from%20Data%20Sharing%20Partners%20using%20BigQuery/gsp1043-1.sh
 
-sudo chmod +x qwiklab_explorers_gsp345.sh
+sudo chmod +x *.sh
 
-./qwiklab_explorers_gsp345.sh
+./*.sh
+```
+
+### 💡 Run the Following Commands in Cloud Shell for : `Data Publisher Project Console`
+
+```
+curl -LO https://raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/refs/heads/main/Consuming%20Customer%20Specific%20Datasets%20from%20Data%20Sharing%20Partners%20using%20BigQuery/gsp1043-2.sh
+
+sudo chmod +x *.sh
+
+./*.sh
+```
+
+### 💡 Run the Following Commands in Cloud Shell for : `Customer (Data Twin) Project Console`
+
+```
+curl -LO https://raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/refs/heads/main/Consuming%20Customer%20Specific%20Datasets%20from%20Data%20Sharing%20Partners%20using%20BigQuery/gsp1043-3.sh
+
+sudo chmod +x *.sh
+
+./*.sh
 ```
 
 ---
