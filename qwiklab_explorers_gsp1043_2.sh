@@ -36,8 +36,7 @@ RANDOM_BG_COLOR=${BG_COLORS[$RANDOM % ${#BG_COLORS[@]}]}
 
 
 # Step 1: Getting Project ID & User ID
-echo "${BOLD}${GREEN}Getting Project ID & User ID${RESET}"
-echo
+
 get_value() {
 
   read -p "Please enter PROJECT_ID: " PROJECT_ID
@@ -54,16 +53,18 @@ get_value
 echo
 
 # Step 2: Create Authorized View in Data Publisher Dataset
+
 bq mk \
 --use_legacy_sql=false \
 --view "SELECT * FROM \`${PROJECT_ID}.demo_dataset.authorized_table\` WHERE state_code = 'NY' LIMIT 1000" \
 ${DEVSHELL_PROJECT_ID}:data_publisher_dataset.authorized_view
 
 # Step 3: Show Dataset Info
-echo "${BOLD}${RED}Showing Dataset Info for data_publisher_dataset${RESET}"
+
 bq show --format=prettyjson $DEVSHELL_PROJECT_ID:data_publisher_dataset > temp_dataset.json
 
 # Step 4: Add View Access to Dataset
+
 jq ".access += [{
   \"view\": {
     \"datasetId\": \"data_publisher_dataset\",
@@ -73,10 +74,11 @@ jq ".access += [{
 }]" temp_dataset.json > updated_dataset.json
 
 # Step 5: Update Dataset Permissions
-echo "${BOLD}${CYAN}Updating Dataset Permissions${RESET}"
+
 bq update --source=updated_dataset.json $DEVSHELL_PROJECT_ID:data_publisher_dataset
 
 # Step 6: Create IAM Policy File
+
 cat <<EOF > policy.json
 {
   "bindings": [
@@ -91,9 +93,13 @@ cat <<EOF > policy.json
 EOF
 
 # Step 7: Set IAM Policy on the View
+echo "${BOLD}${MAGENTA}Setting IAM Policy on authorized_view${RESET}"
 bq set-iam-policy ${DEVSHELL_PROJECT_ID}:data_publisher_dataset.authorized_view policy.json
 
 # Step 8: Prompt to Login as Data Twin
+echo
+echo "${BOLD}${BLUE}Now, Login with Customer (Data Twin) Username${RESET}"
+
 
 # Display a random congratulatory message
 random_congrats
